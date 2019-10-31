@@ -17,7 +17,7 @@
 	memberDTO.setName(request.getParameter("name"));
 	memberDTO.setEmail(request.getParameter("email"));
 	memberDTO.setPhone(request.getParameter("phone"));
-	memberDTO.setGrade(Integer.parseInt(request.getParameter("grade")));
+// 	memberDTO.setGrade(Integer.parseInt(request.getParameter("grade")));
 	
 	Connection con = DBConnector.getConnection();
 	int result = memberDAO.memberJoin(con, memberDTO);
