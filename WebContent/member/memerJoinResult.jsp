@@ -23,6 +23,7 @@
 	int result = memberDAO.memberJoin(con, memberDTO);
 	
 	String message = "회원가입 실패";
+	int n = 0;
 	
 	if(result == 1){
 		message="회원가입 성공";
