@@ -1,0 +1,29 @@
+<%@page import="com.nuri.point.pointDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
+<%
+// 	String dto = (String)request.getAttribute("dto");
+
+	String msg = (String)request.getAttribute("msg");
+	String path = (String)request.getAttribute("path");
+
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript">
+<%-- 	alert('<%= dto %>'); --%>
+
+	alert('<%= msg %>');
+	location.href="<%= path %>";
+	
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
