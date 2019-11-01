@@ -1,3 +1,4 @@
+<%@page import="com.nuri.member.memberDTO"%>
 <%@page import="com.nuri.point.pointDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.nuri.util.DBConnector"%>
@@ -15,6 +16,8 @@
 	Connection con = DBConnector.getConnection();
 	
 	ArrayList<noticeDTO> ar = noticeDAO.noticeList(con);
+	
+	memberDTO memberDTO = (memberDTO)session.getAttribute("member");
 
 %>
 
@@ -50,8 +53,13 @@
 	      	<li><a href="./notice/noticeList.jsp">NOTICE</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-	    	<li><a href="/Servlet_3_jsp/member/memberJoinForm.jsp"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-	      	<li><a href="/Servlet_3_jsp/member/memberLoginForm.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	    	<% if(memberDTO != null) {%>
+	    	<li><a href="<%= request.getContextPath() %>/member/memberMyPage.jsp"><span class="glyphicon glyphicon-user"></span>My Page</a></li>
+	      	<li><a href="<%= request.getContextPath() %>/member/memberLogout.jsp"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+	      	<%}else{ %>
+	      	<li><a href="<%= request.getContextPath() %>/member/memberJoinForm.jsp"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+	      	<li><a href="<%= request.getContextPath() %>/member/memberLoginForm.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	    <%} %>
 	    </ul>
 	  	</div>
 	</nav>
@@ -83,7 +91,9 @@
 	    	<% } %>
 	    </tbody>
 	  </table>
-	  <a href="./noticeWrite.jsp" class= "btn btn-default">Insert</a>
+	  <%if(memberDTO != null && memberDTO.getGrade() == 3){ %>
+	  	<a href="./noticeWrite.jsp" class= "btn btn-default">Write</a>
+	  <%} %>
 	</div>
 </body>
 </html>

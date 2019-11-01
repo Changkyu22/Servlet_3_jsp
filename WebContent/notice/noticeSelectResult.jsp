@@ -1,10 +1,11 @@
+<%@page import="com.nuri.member.memberDTO"%>
 <%@page import="com.nuri.notice.noticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
 	noticeDTO noticeDTO = (noticeDTO)request.getAttribute("dto");
-
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,7 @@
 <title>Insert title here</title>
 </head> 
 <body>
+<%@ include file="../layout/nav.jsp" %>
 	<h1>Notice Select Result Page</h1>
 	<div class="container">
 		<table class="table">
@@ -48,8 +50,12 @@
 	</div>
 	
 	<ul class="pager">
+	<% if(memberDTO != null && memberDTO.getId().equals(noticeDTO.getWriter())){ %>
   		<li><a href="./noticeUpdate.jsp?num=<%= noticeDTO.getNum() %>">UPDATE</a></li>
  		<li><a href="./noticeDeleteResult.jsp?num=<%= noticeDTO.getNum() %>">DELETE</a></li>
+ 	<% } %>
+<%--  		<li><a href="./noticeUpdate.jsp?num=<%= noticeDTO.getNum() %>">UPDATE</a></li> --%>
+<%--  		<li><a href="./noticeDeleteResult.jsp?num=<%= noticeDTO.getNum() %>">DELETE</a></li> --%>
 	</ul>
 	
 </body>

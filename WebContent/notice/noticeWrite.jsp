@@ -1,3 +1,4 @@
+<%@page import="com.nuri.member.memberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,6 +16,18 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+<%@ include file="../layout/nav.jsp" %>
+	
+<%
+	if(memberDTO == null || memberDTO.getGrade() != 3){
+		request.setAttribute("msg", "권한이 없습니다.");
+		request.setAttribute("path", "../index.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("../common/common_result.jsp");
+		view.forward(request, response);
+	}
+
+	
+%>
 	<div class="container">
 	  <h2>Notice Insert Page</h2>
 	  <form action="./noticeWriteResult.jsp" method="post" id="frm" onsubmit=true>
@@ -25,8 +38,8 @@
 	    </div>
 	    
 	    <div class="form-group">
-	      <label for="kor">WRITER</label>
-	      <input type="text" class="form-control" id="writer" placeholder="Enter your ID or name" name="writer">
+	      <label for="writer">WRITER</label>
+	      <input type="text" class="form-control" id="writer" placeholder="Enter your ID or name" name="writer" value="<%= memberDTO.getId() %>" readonly="readonly">
 	    </div>
 	    
 	    <div class="form-group">
