@@ -44,6 +44,10 @@
 				<label for="phone">PHONE:</label>
 				<input type="tel" class="form-control" id="phone" placeholder="Enter PHONE NUMBER" required="required" name="phone" value="<%=memberDTO.getPhone() %>">
 		    </div>
+		     <div class="form-group">
+				<label for="phone">Grade:</label>
+				<input type="tel" class="form-control" id="phone" placeholder="Enter PHONE NUMBER" required="required" name="phone" value="<%=memberDTO.getGrade() %>">
+		    </div>
 			<button type="submit" class="btn btn-default">Update Complete</button>
 		</form>
 	</div>

@@ -13,6 +13,21 @@
 	
 	memberDTO.setId(request.getParameter("id"));
 	memberDTO.setPw(request.getParameter("pw"));
+	/////////////////////////////////////////////
+	
+	String check = request.getParameter("remember");
+	if(check != null){
+		Cookie cookie = new Cookie("id", memberDTO.getId());
+		cookie.setPath(request.getContextPath());
+		cookie.setMaxAge(3600);
+		response.addCookie(cookie);
+	}else{
+		// 쿠키 삭제
+		Cookie cookie = new Cookie("id","");
+		cookie.setPath(request.getContextPath());
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
+	}
 	
 	Connection con = DBConnector.getConnection();
 	memberDTO = memberDAO.memberlogin(con, memberDTO);
@@ -30,14 +45,6 @@
 		view.forward(request, response);
 	}
 	
-// 	if(memberDTO != null){
-// 		request.setAttribute("member", memberDTO);
-		
-// 		RequestDispatcher view = request.getRequestDispatcher("../index.jsp");
-// 		view.forward(request, response);
-// 	}else{
-// 		response.sendRedirect("../index.jsp");
-// 	}
 %>
 
 <!DOCTYPE html>

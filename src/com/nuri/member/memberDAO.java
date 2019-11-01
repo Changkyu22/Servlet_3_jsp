@@ -6,6 +6,23 @@ import java.sql.ResultSet;
 
 public class memberDAO {
 	
+	
+// delete
+	public int memberDelete(Connection con, memberDTO memberDTO) throws Exception{
+		int result = 0;
+		
+		String sql = "delete login where id=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, memberDTO.getId());
+		
+		result = st.executeUpdate();
+		
+		return result;
+	}
+	
+	
 // update
 	
 	public int memberUpdate(Connection con, memberDTO memberDTO) throws Exception{
@@ -83,7 +100,7 @@ public class memberDAO {
 		st.setString(3, memberDTO.getName());
 		st.setString(4, memberDTO.getEmail());
 		st.setString(5, memberDTO.getPhone());
-		st.setInt(6, memberDTO.getGrade());
+//		st.setInt(6, memberDTO.getGrade());
 		
 		
 		//弥辆 傈价

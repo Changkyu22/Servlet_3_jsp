@@ -12,7 +12,19 @@ import com.nuri.util.DBConnector;
 
 public class memberDAOTest {
 
-	@Test
+	@Test	
+	public void memberDelete()throws Exception {
+		memberDAO memberDAO = new memberDAO();
+		memberDTO memberDTO = new memberDTO();
+		
+		Connection con = DBConnector.getConnection();
+		
+		memberDTO.setId("aaa");
+		int result = memberDAO.memberDelete(con, memberDTO);
+		assertEquals(1, result);
+	}
+	
+	//@Test
 	public void memberUpdate()throws Exception {
 		memberDAO memberDAO = new memberDAO();
 		memberDTO memberDTO = new memberDTO();
@@ -24,7 +36,7 @@ public class memberDAOTest {
 		memberDTO.setGrade(3);
 		memberDTO.setName("admin");
 		memberDTO.setPw("asdasd");
-		memberDTO.setId("sss");
+		memberDTO.setId("aaa");
 		int result = memberDAO.memberUpdate(con, memberDTO);
 		assertEquals(1, result);
 	}

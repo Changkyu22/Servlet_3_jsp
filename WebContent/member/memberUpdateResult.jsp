@@ -16,9 +16,13 @@
 	memberDTO.setEmail(request.getParameter("email"));
 	memberDTO.setPhone(request.getParameter("phone"));
 	
+	memberDTO sessionDTO = (memberDTO)session.getAttribute("member");
+	memberDTO.setGrade(sessionDTO.getGrade());
+	
 	Connection con = DBConnector.getConnection();
 	int result = memberDAO.memberUpdate(con, memberDTO);
-
+	
+	con.close();
 	
 	String message = "업데이트 실패";
 	if(result >0){

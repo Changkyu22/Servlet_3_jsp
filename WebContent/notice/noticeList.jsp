@@ -18,7 +18,23 @@
 	ArrayList<noticeDTO> ar = noticeDAO.noticeList(con);
 	
 	memberDTO memberDTO = (memberDTO)session.getAttribute("member");
-
+	
+	con.close();
+	
+	// 쿠키 발행
+	// 쿠키 생성시 생성자에 키와 밸류 필수 입력!!
+	
+	Cookie cookie = new Cookie("name","iu");
+	
+	// 쿠키가 적용되는 Path 설정 : 보통context path 적용
+	cookie.setPath(request.getContextPath());
+	
+	// 쿠키의 유효시간 세팅(단위는 초 단위)
+	// default => 브라우저가 종료되는 시점
+	cookie.setMaxAge(60*60);
+	
+	// 쿠키를 클라이언트로 전송
+	response.addCookie(cookie);
 %>
 
 <!DOCTYPE html>
@@ -50,7 +66,7 @@
 	        		<li><a href="#">Page 1-3</a></li>
 	        	</ul>
 	      	</li>
-	      	<li><a href="./notice/noticeList.jsp">NOTICE</a></li>
+	      	<li><a href="./noticeList.jsp">NOTICE</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	    	<% if(memberDTO != null) {%>

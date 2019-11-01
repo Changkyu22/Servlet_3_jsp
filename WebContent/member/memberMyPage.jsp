@@ -53,7 +53,12 @@
 			<label for="phone">PHONE:</label>
 			<input type="tel" class="form-control" id="phone" placeholder="Enter PHONE NUMBER" required="required" name="phone" value="<%=memberDTO.getPhone() %>" readonly="readonly">
 	    </div>
-		<button type="submit" class="btn btn-default">Go Update</button>
+	     <div class="form-group">
+			<label for="phone">Grade:</label>
+			<input type="tel" class="form-control" id="phone" placeholder="Enter PHONE NUMBER" required="required" name="phone" value="<%=memberDTO.getGrade() %>" readonly="readonly">
+	    </div>
+		<button type="submit" class="btn btn-default">GO Update</button> 
+		<a href="./memberDeleteResult.jsp?id=<%= memberDTO.getId() %>" class="btn btn-default">QUIT</a>
 	</form>
 </div>
 
