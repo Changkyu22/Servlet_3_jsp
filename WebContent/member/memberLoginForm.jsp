@@ -12,7 +12,7 @@
 	}
 	
 // 변형된 for문	
-// 	for(Cookie cookie: cookies){
+// 	for(Cookie cookie: cookies){	
 // 			if(cookie.getName().equals("id")){
 // 				iu = cookie.getValue();
 // 				break;
